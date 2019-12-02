@@ -1,2 +1,2 @@
 # CS236_Fall2019
-CS236 Project
+CS236 class project
