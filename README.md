@@ -2,9 +2,11 @@
 Image super resolution tries to learn a mapping between low resolution and high resolution image, so that high resolution version can be recovered. We use GAN (Generative Adversarial Network) model to achieve this.
 
 ## Files
-super_res_model.py:
-data_loader.py:
-imgutil.py:
+super_res_model.py: main model file. Is used to do model training, model prediction
+
+data_loader.py: Image loader class to load file for training, evaluation
+
+imgutil.py: Misc image utils to do image processing
 
 ## Training data
 Training data (COCO dataset) can be found at http://cocodataset.org
