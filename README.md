@@ -21,7 +21,7 @@ To train the model:
 python super_res_model.py --mode train
 ```
 
-To do super resolution with the model:
+To do super resolution for an image file with the model:
 ```
 python super_res_model.py --mode train --file image_file_name
 ```

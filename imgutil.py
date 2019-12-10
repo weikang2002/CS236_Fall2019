@@ -98,7 +98,7 @@ def compute_psnr(img_file):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='GAN Trainig')
+    parser = argparse.ArgumentParser(description='Image processing')
     parser.add_argument('--mode', default='', help='running mode')
     parser.add_argument('--file', default='', help='image file to process')
 

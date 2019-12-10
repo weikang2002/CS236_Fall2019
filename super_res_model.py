@@ -213,6 +213,7 @@ class SrGanModel():
 
             d_loss_real = self.discriminator.train_on_batch(imgs_hr, valid)
             d_loss_fake = self.discriminator.train_on_batch(fake_hr, fake)
+            print("d_loss_real={}, d_loss_fake={}".format(d_loss_real, d_loss_fake))
 
             #  ************Train Generator***********
             imgs_hr, imgs_lr, imgs_name = self.data_loader.load_data(batch_size)
@@ -220,6 +221,7 @@ class SrGanModel():
             # The generators want the discriminators to label the generated images as real
             valid = np.ones((batch_size,) + patch)
             g_loss = self.combined.train_on_batch([imgs_lr, imgs_hr], [valid, imgs_hr])
+            print("g_loss={}".format(g_loss))
 
             if iteration % gen_interval == 0:
                 self.sample_images(iteration)
@@ -258,12 +260,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.mode == 'train':
+        # change the dataset name here if working on different dataset
         gan = SrGanModel(dataset_name='coco512')
         gan.train(iterations=15000, batch_size=1, gen_interval=100)
     elif args.mode == 'predict':
         generator = load_model("model_generator_8000")
         generator.summary()
 
+        # change the dataset name here if working on different dataset
         data_loader = DataLoader(dataset_name='set14', img_res=(512, 512))
         img_file = args.file
         if not img_file:
